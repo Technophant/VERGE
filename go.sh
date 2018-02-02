@@ -179,28 +179,7 @@ fi
 make -j$(nproc)
 
 if [ -e ~/VERGE/src/qt/VERGE-qt ]; then
-#sudo apt-get -y install pulseaudio
-#sudo apt-get -y install portaudio19-dev
-# synthetic voice 
-#cd ~
-#wget https://sourceforge.net/projects/espeak/files/espeak/espeak-1.48/espeak-1.48.04-source.zip/download
-#unzip -o download
-#cd espeak-1.48.04-source/src
-#cp portaudio19.h portaudio.h
-#make
-#cd ~
-for i in 528 1000 1600 2000 3000
-do
-pactl load-module module-sine frequency=$i > /dev/null
-sleep 0.1
-done
-sleep 1
-pactl unload-module module-sine
-pactl upload-sample complet test2
-openssl rand -hex 4096 | padsp tee /dev/audio > /dev/null
-sleep 1.3
-pactl play-sample test2
-#espeak mission,complete
+
 sudo strip ~/VERGE/src/VERGEd
 sudo strip ~/VERGE/src/qt/VERGE-qt
 sudo make install
